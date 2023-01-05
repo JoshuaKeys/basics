@@ -12,8 +12,6 @@ const httpServer = http.createServer(app);
 
 const websocket = new ws.Server({server: httpServer});
 
-
-
 websocket.on('open', () => {
   console.log('Connected to WS Server')
 })
