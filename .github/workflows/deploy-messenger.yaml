@@ -14,7 +14,7 @@ jobs:
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN}}
-      - run: cd comments && docker build -t keysoutsourcedocker/basics-messenger .
+      - run: cd messenger && docker build -t keysoutsourcedocker/basics-messenger .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
