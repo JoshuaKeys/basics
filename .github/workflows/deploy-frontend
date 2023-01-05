@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'basics-frontent/**'
+      - 'basics-frontend/**'
 jobs:
   build:
     runs-on: ubuntu-latest
