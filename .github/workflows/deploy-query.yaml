@@ -21,4 +21,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push keysoutsourcedocker/basics-query
       - run: doctl kubernetes cluster kubeconfig save fb41ebaf-229e-4ecc-88d3-85cb9ff214db
-      - run: kubectl rollout restart deployment comments-query
+      - run: kubectl rollout restart deployment query-depl
