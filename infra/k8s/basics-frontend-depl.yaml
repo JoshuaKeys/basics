@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basics-frontend-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basics-frontend-depl
+  template:
+    metadata:
+      labels:
+        app: basics-frontend-depl
+    spec:
+      containers:
+        - name: basics-frontend-depl
+          image: keysoutsourcedocker/basics-frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basics-frontend-srv
+spec:
+  selector:
+    app: basics-frontend-depl
+  type: ClusterIP
+  ports:
+    - name: basics-frontend-srv
+      protocol: TCP
+      port: 80
+      targetPort: 80

@@ -6,7 +6,7 @@ const { CommentCreatedListener } = require('./events/example-listener');
 const app = express();
 
 
-connectRabbit(rabbitWrapper).then(() => {
+connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
 });
 

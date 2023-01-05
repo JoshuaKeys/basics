@@ -9,10 +9,9 @@ const app = express();
 
 connectDb();
 
-connectRabbit(rabbitWrapper).then(() => {
+connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
 })
-
 
 app.use(express.json())
 

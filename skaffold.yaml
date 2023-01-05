@@ -48,3 +48,11 @@ build:
         manual:
           - src: './**/*.js'
             dest: .
+    - image: keysoutsourcedocker/basics-frontend
+      context: basics-frontend
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .

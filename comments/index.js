@@ -5,7 +5,7 @@ const { connectRabbit, rabbitWrapper } = require('@giantsoftnats/common');
 
 const app = express();
 
-connectRabbit(rabbitWrapper);
+connectRabbit(rabbitWrapper, () => {});
 connectDb();
 
 app.use(express.json());

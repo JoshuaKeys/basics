@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 connectDb();
 
-connectRabbit(rabbitWrapper).then(() => {
+connectRabbit(rabbitWrapper, () => {
   new PostCreatedListener(rabbitWrapper.client).listen();
   new CommentCreatedListener(rabbitWrapper.client).listen();
 });
