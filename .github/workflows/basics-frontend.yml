@@ -1,6 +1,8 @@
 name: basics-frontend
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "basics-frontend/**"
 jobs:
   build:
     runs-on: ubuntu-latest

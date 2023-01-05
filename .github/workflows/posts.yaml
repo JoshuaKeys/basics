@@ -1,7 +1,9 @@
 name: posts
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "posts/**"
 jobs:
   build:
     runs-on: ubuntu-latest

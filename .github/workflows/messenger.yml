@@ -1,7 +1,9 @@
 name: messenger
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "messenger/**"
 jobs:
   build:
     runs-on: ubuntu-latest
