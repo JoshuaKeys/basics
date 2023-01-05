@@ -13,7 +13,7 @@ connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
 })
 
-app.use(express.json())
+app.use(express.json());
 
 app.use('/api/posts',router)
 

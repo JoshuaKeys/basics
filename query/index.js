@@ -15,9 +15,9 @@ connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
 });
 
-app.use('/api/query', router)
+app.use('/api/query', router);
 
 
 app.listen(3000, () => {
-  console.log(`App listening on port 3000`)
-})
+  console.log(`App listening on port 3000`);
+});

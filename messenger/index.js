@@ -5,7 +5,7 @@ const http = require('http')
 const app = express();
 
 app.get('/ws', (req, res) => {
-  res.send('Hello')
+  res.send('Hello');
 })
 const httpServer = http.createServer(app);
 
