@@ -1,0 +1,24 @@
+name: deploy-query
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'query/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: cd comments && docker build -t keysoutsourcedocker/basics-query .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push keysoutsourcedocker/basics-query
+      - run: doctl kubernetes cluster kubeconfig save fb41ebaf-229e-4ecc-88d3-85cb9ff214db
+      - run: kubectl rollout restart deployment comments-query
