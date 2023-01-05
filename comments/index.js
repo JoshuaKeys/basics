@@ -8,6 +8,10 @@ const app = express();
 connectRabbit(rabbitWrapper, () => {});
 connectDb();
 
+app.get('/api/comments/name', (req, res) => {
+  res.send('Hello World')
+})
+
 app.use(express.json());
 
 app.use('/api/comments/', router);
