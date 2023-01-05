@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts-depl
+  template:
+    metadata:
+      labels:
+        app: posts-depl
+    spec:
+      containers:
+        - name: posts-depl
+          image: keysoutsourcedocker/basics-posts
+          env:
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: basics
+            - name: NATS_CLIENT_ID
+              value: clientIdMyFoot
+            - name: MONGO_URI
+              value: mongodb://posts-mongo-srv:27017/posts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  selector:
+    app: posts-depl
+  type: ClusterIP
+  ports:
+    - name: posts-srv
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

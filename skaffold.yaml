@@ -1,0 +1,50 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: keysoutsourcedocker/node-web-app
+      context: server
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: keysoutsourcedocker/basics-posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: keysoutsourcedocker/basics-comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: keysoutsourcedocker/basics-messenger
+      context: messenger
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
+    - image: keysoutsourcedocker/basics-query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './**/*.js'
+            dest: .
