@@ -4,7 +4,6 @@ const Comments = require("../models/comments");
 
 exports.getCommentsById = asyncHandler(async (req, res, next) => {
   const postId = req.params.postId;
-
   const comments = await Comments.find({postId});
 
   res.status(200).json(comments);
