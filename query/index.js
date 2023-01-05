@@ -15,7 +15,6 @@ connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
 });
 
-
 app.use('/api/query', router);
 
 
