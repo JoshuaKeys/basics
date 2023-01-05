@@ -1,11 +1,11 @@
-name: deploy-comments
+name: deploy-posts
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'comments/**'
+      - 'posts/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,11 +14,11 @@ jobs:
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN}}
-      - run: cd comments && docker build -t keysoutsourcedocker/basics-comments .
+      - run: cd comments && docker build -t keysoutsourcedocker/basics-posts .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker push keysoutsourcedocker/basics-comments
+      - run: docker push keysoutsourcedocker/basics-posts
       - run: doctl kubernetes cluster kubeconfig save fb41ebaf-229e-4ecc-88d3-85cb9ff214db
-      - run: kubectl rollout restart deployment comments-depl
+      - run: kubectl rollout restart deployment posts-depl
