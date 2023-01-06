@@ -4,9 +4,10 @@ const http = require('http')
 
 const app = express();
 
-app.get('/websocket', (req, res) => {
+app.get('/websocket/name', (req, res) => {
   res.send('Hello');
-})
+});
+
 const httpServer = http.createServer(app);
 
 
