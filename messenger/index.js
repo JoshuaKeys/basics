@@ -5,7 +5,7 @@ const router = require('./routes/messenger');
 
 const app = express();
 
-app.use('/websocket', router)
+app.use('/api/websocket', router)
 
 const httpServer = http.createServer(app);
 
