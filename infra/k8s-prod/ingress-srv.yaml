@@ -38,13 +38,27 @@ spec:
                 name: query-srv
                 port:
                   number: 3000
-          - path: /websocket/?(.*)
+          - path: /api/websocket/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: messenger-srv
                 port:
                   number: 3000
+          # - path: /api/websocket/?(.*)
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: messenger-srv
+          #       port:
+          #         number: 3000
+          # - path: /api/queries/?(.*)
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: messenger-srv
+          #       port:
+          #         number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
