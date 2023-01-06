@@ -1,14 +1,14 @@
 const express = require('express');
 const ws = require('ws')
-const http = require('http')
+const http = require('http');
+const router = require('./routes/messenger');
 
 const app = express();
 
-app.get('/websocket/name', (req, res) => {
-  res.send('Hello');
-});
+app.use('/websocket', router)
 
 const httpServer = http.createServer(app);
+
 
 
 const websocket = new ws.Server({server: httpServer});
