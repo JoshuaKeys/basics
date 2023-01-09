@@ -11,12 +11,12 @@ connectDb();
 
 connectRabbit(rabbitWrapper, () => {
   new CommentCreatedListener(rabbitWrapper.client).listen();
-})
+});
 
 app.use(express.json());
 
-app.use('/api/posts',router)
+app.use('/api/posts',router);
 
 app.listen(3000, () => {
-  console.log(`Listening on port 3000`)
-})
+  console.log(`Listening on port 3000`);
+});
